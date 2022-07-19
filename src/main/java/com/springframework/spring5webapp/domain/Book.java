@@ -13,12 +13,11 @@ public class Book {
     private Long id;
     private String title;
     private String isbn;
-    @ManyToMany(  cascade = CascadeType.ALL)
+    @ManyToMany( cascade = CascadeType.ALL)
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "publisher_id")
+    @ManyToOne
     private Publisher publisher;
 
     public Book() {

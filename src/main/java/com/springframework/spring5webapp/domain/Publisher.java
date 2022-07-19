@@ -10,17 +10,19 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String name;
     private String address;
     private String city;
     private String state;
-    private int zip;
+    private String zip;
     @OneToMany
+    @JoinColumn(name = "publisher_id")
     private Set<Book> books = new HashSet<>();
 
     public Publisher() {
     }
 
-    public Publisher(String address, String city, String state, int zip) {
+    public Publisher(String address, String city, String state, String zip) {
         this.address = address;
         this.city = city;
         this.state = state;
@@ -31,6 +33,7 @@ public class Publisher {
     public String toString() {
         return "Publisher{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -61,6 +64,14 @@ public class Publisher {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -85,11 +96,11 @@ public class Publisher {
         this.state = state;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
